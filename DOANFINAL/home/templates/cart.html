@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+    <title>BODY BALANCE</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bmi.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">>-->
+    <!--<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="assets/css/common.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <style>
+        .main-content {
+            padding-top: 80px;
+        }
+    </style>
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark py-2" id="mainNav" style="background: rgb(52, 58, 64);border-style: none;border-color: rgb(255, 255, 255);">
+    <div class="container">
+        <a class="navbar-brand" href="" style="color: var(--bs-yellow); font-family: 'Kaushan Script', serif; font-weight: bold;">BODYBALANCE</a>
+        <button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto text-uppercase">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'UserMember:indexafterlogin' %}#services">Description</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'UserMember:indexafterlogin' %}#portfolio">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'UserMember:indexafterlogin' %}#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'UserMember:indexafterlogin' %}#team">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'UserMember:indexafterlogin' %}#contact">Contact</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'UserMember:logout' %}">SIGN OUT</a></li>
+            <li class="nav-item"></li>
+          </ul>
+            <form class="d-flex">
+                <button class="btn btn-outline-light" type="submit">
+                    <i class="bi-cart-fill m-1"></i>
+                    CART
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="main-content">
+    <div class="shopping-carts mb-4 pt-4">
+        <div class="container">
+            <h1 class="h3 mb-4 font-weight-bold">
+                Shopping Cart
+            </h1>
+            <div class="row">
+                <input type="hidden" name="_token" value="RjQsbp7gvP7xOqINWPUcTZXtE2F3G0LNcAK1E5Ib">            <input type="hidden" id="currencyIcon" value="$">
+                <div class="col-12 col-lg-8">
+                    <div class="shopping-carts-content mb-4 mb-lg-0">
+                        <div class="table-title bg-gray-lighter p-2 d-none d-lg-block">
+                            <div class="row px-2">
+                                <div class="col-3 px-2">
+                                    <div class="font-weight-bold">PRODUCT</div>
+                                </div>
+                                <div class="col-9 px-2">
+                                    <div class="row px-2">
+                                        <div class="col-12 col-lg-4 px-2">
+                                        
+                                        </div>
+                                        <div class="col-12 col-lg-8 px-2">
+                                            <div class="row px-2">
+                                                <div class="col-12 col-lg-5 px-2">
+                                                    <div class="font-weight-bold">PRICE</div>
+                                                </div>
+                                                <div class="col-12 col-lg-4 px-2">
+                                                    <div class="font-weight-bold">QTY</div>
+                                                </div>
+                                                <div class="col-12 col-lg-3 px-2 text-right">
+                                                    <div class="font-weight-bold">TOTAL</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if cart|length > 0 %}
+                        {% for item in cart %}
+                        {% with product=item.whey %}
+                        <div class="table-body px-2">
+                            <div class="cart-item border-bottom" data-key="">
+                                <div class="row px-2 py-2">
+                                    <div class="col-3 col-lg-2 px-2">
+                                        <a href="#">
+                                            <img src="../../../../../../{{product.whey_img}}" alt="{{product.whey_img}}" class="img-fluid">
+                                        </a>
+                                    </div>
+                                    <input type="hidden" name="shipping" class="shipping" value="0">
+                                    <div class="col-9 col-lg-10 px-2">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-4">
+                                                <h5 class="rem-1 font-weight-bold ellipsis-block">
+                                                    <a class="text-black" href="">
+                                                        {{product.whey_name}}
+                                                    </a>
+                                                </h5>
+                                                {% comment %} <div class="font-weight-light rem-0-dot-90">
+                                                    <span class="font-weight-bold">color</span>: For Samsung S8 Plus
+                                                </div> {% endcomment %}
+                                            </div>
+                                            <div class="col-12 col-lg-8">
+                                                <div class="row px-2">
+                                                    <div class="col-12 col-lg-4 px-2 mb-2">
+                                                        <span class="font-weight-bold show-price mr-2 mr-lg-0 rem-1" >{{product.whey_price}} $</span>
+                                                        <div class="rem-0-dot-90"><span class="font-weight-bold">Shipping</span>: $0.00</div>
+                                                    </div>
+                                                    <div class="col-7 col-lg-4 px-2">
+                                                        <div class="quantity kn-quantity mr-3">
+                                                            <input type="number" value="1" class="form-control" min="0" name="quantity">
+                                                        </div>
+                                                        <p class="text-left pr-2">
+                                                            <a href="" class="rem-1 text-danger text-underline">
+                                                                Remove
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-5 col-lg-4 px-0 px-lg-2 text-right">
+                                                        <div class="font-weight-bold rem-1-dot-25 sub-total">{{product.whey_price}} $</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endwith %}
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <input type="hidden" value="https://jervisfamily.com/api/cart/cart/update" id="url_update_cart">
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="shopping-carts-total bg-gray-lighter py-2 px-2">
+                        <div class="bg-white p-3">
+                            <h4 class="text-uppercase font-md-more font-weight-bold mb-3">cart totals</h4>
+                            <div class="show-all-subtotal">
+                                <div class="d-flex font-weight-bold align-items-center justify-content-between mb-1">
+                                    <span class="h6 text-black mr-3">Subtotal</span>
+                                    <span class="h5">$100.00</span>
+                                </div>
+        
+                                <div class="d-flex font-weight-bold align-items-center justify-content-between mb-1">
+                                    <span class="h6 text-black mr-3">Shipping</span>
+                                    <span class="h5">$0.00</span>
+                                </div>
+                            </div>
+                            <hr class="my-2" />
+                            <div class="d-flex font-weight-bold align-items-center mb-3 justify-content-between">
+                                <span class="text-black h5 font-weight-bold mr-3">Total</span>
+                                <span class="text-pink-dark h4 show-total text-danger" data-total="">$ 100.00</span>
+                            </div>
+                            <p class="mb-3">
+                                <a href="./checkout" class="btn btn-lg btn-danger w-100">
+                                    <i class="fa fa-check" aria-hidden="true"></i> Proceed to checkout
+                                </a>
+                            </p>
+                            <img src="https://jervisfamily.com/images/cards.png" class="img-fluid" alt="">
+                        </div>
+                        
+                        <div class="loading-animation d-none">
+                            <i class="fas fa-spinner fa-pulse icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  $(document).ready(function(){
+    $.(".card-checkbox__input").on('click', function(){
+    $.ajax({
+        type: 'POST',
+        data: {
+          url: "ajax/cartadd"
+          productid: pr_id,
+          productqty: 1,
+          csrfmiddlewaretoken: "{{csrf_token}}",
+          action: 'post'
+        },
+      });
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="assets/js/script.min.js"></script>
+
+
+</body>
+</html>

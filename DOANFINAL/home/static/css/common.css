@@ -1,0 +1,19 @@
+.main-content{
+    padding-top: 135px;
+    padding-bottom: 16px;
+}
+
+.font-weight-bold{
+    font-weight: bold;
+}
+
+.form-control-green{
+    border-color: #20df80;
+}
+.form-control-green:focus{
+    border-color: #20df80;
+    box-shadow: 0 0 0 0.25rem #20df8047;
+}
+.bg-gray-lighter {
+    background-color: #ecececd9 !important;
+}

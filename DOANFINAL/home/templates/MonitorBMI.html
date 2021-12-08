@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+  <title>BODY BALANCE</title>
+  {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bmi.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+  {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" /> {% endcomment %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  {% comment %} <link rel="stylesheet" href="assets/css/common.css"> {% endcomment %}
+  {% comment %} <link rel="stylesheet" href="assets/css/bmi.css"> {% endcomment %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark py-2" id="mainNav" style="background: rgb(52, 58, 64);border-style: none;border-color: rgb(255, 255, 255);">
+  <div class="container">
+    <a class="navbar-brand" href="" style="color: var(--bs-yellow); font-family: 'Kaushan Script', serif; font-weight: bold;">BODYBALANCE</a>
+    <button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto text-uppercase">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'UserMember:indexafterlogin' %}#services">Description</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'UserMember:indexafterlogin' %}#portfolio">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'UserMember:indexafterlogin' %}#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'UserMember:indexafterlogin' %}#team">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'UserMember:indexafterlogin' %}#contact">Contact</a>
+            </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'UserMember:logout' %}">SIGN OUT</a></li>
+       <!-- <li class="nav-item"
+          <a class="nav-link" href="register.html">SIGN UP</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">SIGN IN</a>
+        </li>-->
+      </ul>
+      {% comment %} <h1>{{products.pr_name}}</h1> {% endcomment %}
+      <form class="d-flex">
+        <a class="btn btn-outline-light" href="./cart">
+          <i class="bi-cart-fill m-1"></i>
+          CART
+          <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+        </a>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="main-content">
+  <div class="container mb-4">
+    <ul class="progressbar" style="padding-left: 0">
+      <li id="progrebarStep1" class="">Monitor BMI</li>
+      <li id="progrebarStep2">Expected</li>
+      <li id="progrebarStep3">Nutritions</li>
+      <li id="progrebarStep4">Exercises</li>
+      <li id="progrebarStep5">PT</li>
+    </ul>
+  </div>
+  <div class="wrapper-steps">
+    <div class="container">
+      <div class="wrapper-steps-content">
+        <section class="step active" data-step="1">
+          <div class="container">
+            <h3 class="text-center mb-3">Enter your weight and height</h5>
+              <div class="content-bmi-input">
+              <form class="">
+                <div class="mb-3">
+                  <label for="weight" class="form-label h4">Weight</label>
+                  <input type="integrity" id="weight" class="form-control form-control-lg form-control-green" placeholder="Enter weight in kg"/>
+                </div>
+                <div class="mb-3">
+                  <label for="height" class="form-label h4">Height</label>
+                  <input type="integrity" id="height" class="form-control form-control-lg form-control-green" placeholder="Enter height in cm"/>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+        <section class="step" data-step="2">
+          <div class="container">
+            <h3 class="text-center mb-3">Choose your desired level to start your weight loss regimen</h5>
+              <section class="d-flex flex-wrap justify-content-center">
+                <div class="radio-avatar-item">
+                  <input type="radio" id="bmi_type_01" name="bmi_type" value="1" checked>
+                  <label for="bmi_type_01">
+                    <h2>Level 1</h2>
+                    <p>BMI < 18.5</p>
+                    <p>Your body is a bit thin, try to improve it</p>
+                    <p>You should increase exercise and eat to improve health.</p>
+                  </label>
+                </div>
+                <div class="radio-avatar-item">
+                  <input type="radio" id="bmi_type_02" name="bmi_type" value="2">
+                  <label for="bmi_type_02">
+                    <h2>Level 2</h2>
+                    <p>18.5 < BMI < 22.9 </p>
+                    <p>Your body is in balance, try to maintain it.</p>
+                    <p>You should try to keep up with your exercise and diet habits to keep your body in balance.</p>
+                  </label>
+                </div>
+                <div class="radio-avatar-item">
+                  <input type="radio" id="bmi_type_03" name="bmi_type" value="3">
+                  <label for="bmi_type_03">
+                    <h2>Level 3</h2>
+                    <p>23 < BMI < 24.9</p>
+                    <p>Your body is a bit overweight. </p>
+                    <p>You should try to exercise, eat in moderation, to balance your weight index.</p>
+                  </label>
+                </div>
+                <div class="radio-avatar-item">
+                  <input type="radio" id="bmi_type_04" name="bmi_type" value="4" disabled>
+                  <label for="bmi_type_04">
+                    <h2>Level 4</h2>
+                    <p>25 < BMI <  29.9 </p>
+                    <p>Your body is in the pre-obesity stage.</p>
+                    <p>You need to rebalance your diet, actively exercise, and limit fat to balance your body.</p>
+                  </label>
+                </div>
+              </section>
+          </div>
+        </section>
+        <section class="step" data-step="3">
+          <div class="container">
+            <h3 class="text-center mb-3">Select desired foods to start the regimen.</h5>
+              <div class="d-flex flex-wrap justify-content-center ">
+                {% for itempro in products %} 
+                  <label class="card-checkbox">
+                    <input class="card-checkbox__input " type="checkbox" /> 
+                    <div class="card-checkbox__body sendpro" href ="#" id = "{{itempro.pr_id}}">
+                      <div class="card-checkbox__body-cover">
+                        <img class="card-checkbox__body-cover-image" src="{% static 'assets/img/whey/pic3.png'%}"/>
+                        <span class="card-checkbox__body-cover-checkbox">
+                          <svg class="card-checkbox__body-cover-checkbox--svg" viewBox="0 0 12 10">
+                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                          </svg>
+                        </span>
+                     </div>
+                      <header class="card-checkbox__body-header">
+                        <h6 class="card-checkbox__body-header-title">{{itempro.pr_name}}</h6>
+                        <p class="card-checkbox__body-header-subtitle">Cals: {{itempro.pr_cals}}</p>
+                        <p class="card-checkbox__body-header-subtitle">Price: {{itempro.pr_price}}</p>
+                      </header>
+                    </div>
+                  </label>
+                  {% endfor %} 
+                  
+              </div>
+          </div>
+        </section>
+        <section class="step" data-step="4">
+          <div class="container">
+            <h3 class="text-center mb-3">Choose exercises to start your weight loss regimen</h5>
+              <div class="d-flex flex-wrap justify-content-center">
+                {% for itemex in exercises %}
+                  <label class="card-checkbox">
+                    <input class="card-checkbox__input" type="checkbox"/>
+                    <div class="card-checkbox__body">
+                      <div class="card-checkbox__body-cover">
+                        <img class="card-checkbox__body-cover-image" src = "../../../../../../../../{{itemex.ex_img}}" /> 
+                        <span class="card-checkbox__body-cover-checkbox">
+                          <svg class="card-checkbox__body-cover-checkbox--svg" viewBox="0 0 12 10">
+                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                          </svg>
+                        </span>
+                      </div>
+                      <header class="card-checkbox__body-header">
+                        <h5 class="card-checkbox__body-header-title">{{itemex.ex_name}}</h5>
+                        <p class="card-checkbox__body-header-subtitle">Cals {{itemex.ex_cals}}/30mis</p>
+                      </header>
+                    </div>
+                  </label>
+                {% endfor %} 
+                  
+              </div>
+          </div>
+        </section>
+        <section class="step" data-step="5">
+          <div class="container">
+            <h3 class="text-center mb-3">Choose PT to support exercise</h5>
+            
+            <section class="d-flex flex-wrap justify-content-center">
+            {% for itempt in PTs %}
+                  <label class="card-checkbox">
+                    <input class="card-checkbox__input sendpt" type="checkbox"/>
+                    <div class="card-checkbox__body">
+                      <div class="card-checkbox__body-cover">
+                        <img class="card-checkbox__body-cover-image" src="{% static 'assets/img/pic7.png'%}"/>
+                        <span class="card-checkbox__body-cover-checkbox">
+                          <svg class="card-checkbox__body-cover-checkbox--svg" viewBox="0 0 12 10">
+                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                          </svg>
+                        </span>
+                      </div>
+                      <header class="card-checkbox__body-header">
+                        <h5>{{itempt.pt_name}}</h5>
+                        <p>Age: {{itempt.pt_age}}</p>
+                        <p>Exp: {{itempt.pt_exp}} years</p>
+                        <p>Price: {{itempt.pt_price}}$</p>
+                      </header>
+                    </div>
+                  </label>
+                {% endfor %} 
+            
+            </section>
+            
+          </div>
+        </section>
+      </div>
+      <div class="wrapper-steps-button d-flex justify-content-between">
+        <button class="btn btn-primary prev">Prev</button>
+        <button class="btn btn-primary next active">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{% static 'js/script.min.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+  $('.wrapper-steps-button').on('click', '.prev', function(){
+    displayStep('prev');
+  });
+  $('.wrapper-steps-button').on('click', '.next', function(){
+    displayStep('next');
+  });
+
+  function displayStep(type = 'next') {
+    let minStep = 1;
+    let maxStep = 5;
+    let currentStep = parseInt($('.step.active').data('step'));
+    if(type == 'next'){
+      let nextStep = currentStep + 1;
+      $('.step').removeClass('active');
+      if(nextStep > maxStep){
+        nextStep = maxStep;
+        $('.wrapper-steps-button .next').removeClass('active');
+      } else {
+        $('.wrapper-steps-button .next').addClass('active');
+      }
+      $('.wrapper-steps-button .prev').addClass('active');
+      $('.step:nth-child('+nextStep+')').addClass('active');
+
+      displayProgressBar(nextStep);
+    } else {
+      let prevStep = currentStep - 1;
+      $('.step').removeClass('active');
+      if(prevStep < minStep){
+        prevStep = minStep;
+        $('.wrapper-steps-button .prev').removeClass('active');
+      } else {
+        $('.wrapper-steps-button .prev').addClass('active');
+      }
+      $('.wrapper-steps-button .next').addClass('active');
+      $('.step:nth-child('+prevStep+')').addClass('active');
+
+      displayProgressBar(prevStep);
+    }
+  }
+  
+
+  function displayProgressBar(completedStep = 0) {
+    $('.progressbar li').removeClass('active');
+    for (let i = 0; i < completedStep; i++){
+      $('#progrebarStep'+i).addClass('active');
+    }
+  }
+
+</script>
+
+<script>
+
+  $(document).ready(function(){
+    $(".sendpro").on('click', function(e){
+      var pr_id = e.target.id;
+      $.ajax({
+        type: 'POST',
+        url: '{% url "UserMember:cartadd1" %}',
+        data: {
+          proid: pr_id,
+          proqty: 1,
+          csrfmiddlewaretoken: "{{csrf_token}}",
+          action: 'post'
+        },
+         success: function (json) {
+            $("#success-alert").show();
+            alert(1);
+          },
+        });
+      });
+    })
+
+</script>
+
+</body>
+</html>
